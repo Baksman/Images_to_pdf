@@ -21,7 +21,7 @@ class ImageToPdf {
         );
       }
       Directory appDocDir = await getApplicationDocumentsDirectory();
-      final file = File("${appDocDir.path}/example.pdf");
+      final file = File("${appDocDir.path}/${DateTime.now().toIso8601String()}.pdf");
       final bytes = await pdf.save();
        return await file.writeAsBytes(bytes,flush: true);
     }
