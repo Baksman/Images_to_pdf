@@ -15,7 +15,7 @@ class ImageToPdf {
         pdf.addPage(
           pw.Page(
             build: (pw.Context context) {
-              return pw.Image(pdfImage,fit:pw.BoxFit.contain); // Center
+              return pw.Image(pdfImage,fit:pw.BoxFit.cover); // Center
             },
           ),
         );
