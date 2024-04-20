@@ -3,7 +3,7 @@ part of image_to_pdf_converter;
 
 
 class ImageToPdf {
-  static Future<dynamic> imageList({required List<File?> listOfFiles}) async {
+  static Future<dynamic> imageList({required List<File?> listOfFiles,String? prefix}) async {
     if (listOfFiles.isEmpty) {
       throw "Your List is Empty";
     } else {
@@ -21,7 +21,7 @@ class ImageToPdf {
         );
       }
       Directory appDocDir = await getApplicationDocumentsDirectory();
-      final file = File("${appDocDir.path}/${DateTime.now().toIso8601String()}.pdf");
+      final file = File("${appDocDir.path}/${prefix??""}${DateTime.now().toIso8601String()}.pdf");
       final bytes = await pdf.save();
        return await file.writeAsBytes(bytes,flush: true);
     }
